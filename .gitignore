@@ -1,6 +1,10 @@
 #data_samples
 data_sample.csv
 processed_data.csv
+data/
+
+#jupyter-notebooks
+notebooks/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

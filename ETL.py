@@ -2,7 +2,11 @@ import pandas as pd
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, MetaData, Table
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-df = pd.read_csv('data_sample.csv')
+from packages.extractor import extract_from_caleb_excel
+
+path_to_excel = './data/Tracker data 20240528.xlsx'
+
+df = extract_from_caleb_excel(path_to_excel)
 
 # Process DataFrame
 records = []
@@ -17,7 +21,7 @@ for index, row in df.iterrows():
 # Convert records to DataFrame
 processed_df = pd.DataFrame(records)
 
-processed_df.to_csv('processed_data.csv')
+processed_df.to_csv('data/processed_data.csv')
 # SQLAlchemy setup
 Base = declarative_base()
 
