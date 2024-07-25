@@ -2,15 +2,6 @@ import pandas as pd
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, MetaData, Table
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-# Sample DataFrame
-# data = {
-#     'Timestamp': ['2024-05-28 06:00:00', '2024-05-28 06:05:00', '2024-05-28 06:10:00', '2024-05-28 06:15:00', '2024-05-28 06:20:00', '2024-05-28 06:25:00'],
-#     'Current roll (degrees) [Tracker TCU-087-001]': [5.8, 5.8, 5.8, 5.8, 5.8, 5.8],
-#     'Current roll (degrees) [Tracker TCU-087-002]': [5.8, 5.8, 5.8, 5.8, 5.8, 5.8]
-# }
-
-# df = pd.DataFrame(data)
-# df['Timestamp'] = pd.to_datetime(df['Timestamp'])
 df = pd.read_csv('data_sample.csv')
 
 # Process DataFrame

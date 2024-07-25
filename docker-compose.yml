@@ -4,8 +4,6 @@ networks:
   infrastructure-address:
     driver: bridge
 
-volumes:
-  postgres_data:
 
 services:
   grafana:
@@ -33,6 +31,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./docker/init_db.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_USER: docker
       POSTGRES_PASSWORD: password
