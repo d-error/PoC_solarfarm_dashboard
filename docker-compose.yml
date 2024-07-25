@@ -1,0 +1,40 @@
+version: "3.8"
+
+networks:
+  infrastructure-address:
+    driver: bridge
+
+volumes:
+  postgres_data:
+
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: on-failure
+    ports:
+      - "3000:3000"
+    environment:
+      GF_DATABASE_TYPE: postgres
+      GF_DATABASE_HOST: db:5432
+      GF_DATABASE_NAME: postgres
+      GF_DATABASE_USER: docker
+      GF_DATABASE_PASSWORD: password
+    depends_on:
+      - db
+    networks:
+      - infrastructure-address
+
+  db:
+    image: postgres
+    restart: always
+    container_name: postgre_grafana
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: password
+    networks:
+      - infrastructure-address

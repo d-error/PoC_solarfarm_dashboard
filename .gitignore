@@ -1,3 +1,7 @@
+#data_samples
+data_sample.csv
+processed_data.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
